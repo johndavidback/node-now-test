@@ -3,7 +3,7 @@
 	<meta charset="utf-8">
 	<title>Chat with me</title>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script type="text/javascript" src="http://10.4.16.104:1337/nowjs/now.js"></script>
+	<script type="text/javascript" src="http://10.4.16.104:1339/nowjs/now.js"></script>
 
 	<script type="text/javascript">
 	  now.ready(function(){
@@ -26,7 +26,6 @@
 
 	    $("#send").click(function() {
 	    	now.distributeMessage($("#text-input").val());
-	    	now.logStuff('Trying to send a message from ' + now.name);
 	    	$("#text-input").val('');
 	    });
 

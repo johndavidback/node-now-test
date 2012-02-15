@@ -17,11 +17,13 @@ var httpServer = require('http').createServer(function(request, response) {
 
 });
 
-httpServer.listen(1337, '10.4.16.104');
+httpServer.listen(1339, '10.4.16.104');
 console.log('Listening on ' + 1337);
 
 var nowjs = require("now");
 var everyone = nowjs.initialize(httpServer);
+
+var chat_group = nowjs.getGroup('chat-group');
 
 // var everyone = nowjs.initialize(server);
 
@@ -48,12 +50,23 @@ everyone.now.logStuff = function(msg) {
 };
 
 nowjs.on('connect', function() {
-	console.log('Adding ' + this.now.name + ' to user lists.');		
-	everyone.now.addUserToList(this.now.name, this.now.clientId);
+	//console.log('Adding ' + this.now.name + ' to user lists.');		
+	//everyone.now.addUserToList(this.now.name, this.now.clientId);
+
+	chat_group.addUser(this.user.clientId);
+	//chat_group.now.addUserToList(this.now.name, this.user.clientId);
+
+	//everyone.now.addUserToList(this.now.name, this.user.clientId);
+	var client_id = this.user.clientId;
+	var name = this.now.name;
+	console.log('User ' + name + ' with id ' + client_id + ' is now online');
 
 });
 
 nowjs.on('disconnect', function() {
-	everyone.now.removeUserFromList(this.now.clientId);
+	var client_id = this.user.clientId;
+	var name = this.now.name;
+
+	console.log('User ' + name + ' with id ' + client_id + ' is now offline');
 });
 
