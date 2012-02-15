@@ -19,19 +19,11 @@
 	    };
 
 	    now.addUserToList = function(name, id) {
-	    	$("<li></li>").html("<a href='#' class='user-direct' value='" + id + "'>" + name + "</a>").appendTo($("#the-list"));
+	    	$("<li id='" + id + "'></li>").html("<a href='#' class='user-direct' value='" + id + "'>" + name + "</a>").appendTo($("#the-list"));
 	    };
 
 	    now.removeUserFromList = function(id) {
 	    	$("#" + id).remove();
-	    };
-
-	    now.populateList = function(users) {
-	    	for var(i = 0; i < users.length; i++)
-	    	{
-	    		$("<li></li>").html("<a href='#' class='user-direct' value='" + users[i] + "'>" + users[i] + "</a>").appendTo($("#the-list"));
-
-	    	}
 	    };
 
 	    $("#send").click(function() {
