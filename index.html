@@ -3,11 +3,13 @@
 	<meta charset="utf-8">
 	<title>Chat with me</title>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script type="text/javascript" src="http://10.4.16.104:1339/nowjs/now.js"></script>
+	<script type="text/javascript" src="/nowjs/now.js"></script>
 
 	<script type="text/javascript">
-	  now.ready(function(){
-	    now.name = prompt("What is your name?", "");
+
+	  $(document).ready(function () {
+
+	  	now.name = prompt("What is your name?", "");
 	    //now.logStuff("new user joined: " + now.name);
 
 	    now.receiveMessage = function(name, id, msg) {
@@ -24,14 +26,18 @@
 	    	$("#" + id).remove();
 	    };
 
+	    now.populateList = function(users) {
+	    	for var(i = 0; i < users.length; i++)
+	    	{
+	    		$("<li></li>").html("<a href='#' class='user-direct' value='" + users[i] + "'>" + users[i] + "</a>").appendTo($("#the-list"));
+
+	    	}
+	    };
+
 	    $("#send").click(function() {
 	    	now.distributeMessage($("#text-input").val());
 	    	$("#text-input").val('');
 	    });
-
-	  });
-
-	  $(document).ready(function () {
 	  	
 	  	$(".user-direct").live('click', function() {
 	  		var name = $(this).attr('data-name'),
