@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title>Chat with me</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://10.4.16.104:1338/nowjs/now.js"></script>
+
+	<script type="text/javascript">
+	  now.ready(function(){
+	    
+	    now.name = prompt("What is your name?", "");
+	    now.logStuff("new user joined: " + now.name);
+
+	    now.receiveMessage = function(name, id, msg) {
+	    	var html = $("<p></p>").html("[<a href='#' class='user-direct' value='" + id + "' data-name='" + name + "'>" + name + "</a>] : " + msg);
+	    	$("#msg").append(html);
+	    	$("#msg").append(now.clientId);
+	    };
+
+	    now.addUserToList = function(name, id) {
+	    	$("<li id='" + id + "'></li>").html("<a href='#' class='user-direct' value='" + id + "'>" + name + "</a>").appendTo($("#the-list"));
+
+	    	alert(id);
+	    };
+
+	    now.removeUserFromList = function(id) {
+	    	$("#" + id).remove();
+	    }
+
+	    $("#send").click(function() {
+	    	now.distributeMessage($("#text-input").val());
+	    	now.logStuff('Trying to send a message from ' + now.name);
+	    	$("#text-input").val('');
+	    });
+
+	  });
+
+	  $(document).ready(function () {
+	  	
+	  	$(".user-direct").live('click', function() {
+	  		var name = $(this).attr('data-name'),
+	  				id = $(this).attr('value'),
+	  				msg = prompt('Send direct message to ' + name);
+
+	  		if(msg){
+	  			now.directMessage(id, msg);
+	  		}
+
+	  	});
+
+	  });
+
+	</script>
+
+</head>
+<body>
+<div id="container">
+	<h1>Hey, let's chat</h1>
+		
+		<div id="msg"></div>
+		<input type="text" id="text-input">
+		<input type="button" value="Send" id="send">
+
+		<div id="user-list">
+			<h3>Online Users</h3>
+			<ul id="the-list">
+
+			</ul>
+		</div>
+
+</div>
+
+</body>
+</html>
