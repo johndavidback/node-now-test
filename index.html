@@ -3,13 +3,12 @@
 	<meta charset="utf-8">
 	<title>Chat with me</title>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script type="text/javascript" src="http://10.4.16.104:1338/nowjs/now.js"></script>
+	<script type="text/javascript" src="http://10.4.16.104:1337/nowjs/now.js"></script>
 
 	<script type="text/javascript">
 	  now.ready(function(){
-	    
 	    now.name = prompt("What is your name?", "");
-	    now.logStuff("new user joined: " + now.name);
+	    //now.logStuff("new user joined: " + now.name);
 
 	    now.receiveMessage = function(name, id, msg) {
 	    	var html = $("<p></p>").html("[<a href='#' class='user-direct' value='" + id + "' data-name='" + name + "'>" + name + "</a>] : " + msg);
@@ -18,14 +17,12 @@
 	    };
 
 	    now.addUserToList = function(name, id) {
-	    	$("<li id='" + id + "'></li>").html("<a href='#' class='user-direct' value='" + id + "'>" + name + "</a>").appendTo($("#the-list"));
-
-	    	alert(id);
+	    	$("<li></li>").html("<a href='#' class='user-direct' value='" + id + "'>" + name + "</a>").appendTo($("#the-list"));
 	    };
 
 	    now.removeUserFromList = function(id) {
 	    	$("#" + id).remove();
-	    }
+	    };
 
 	    $("#send").click(function() {
 	    	now.distributeMessage($("#text-input").val());
@@ -45,7 +42,6 @@
 	  		if(msg){
 	  			now.directMessage(id, msg);
 	  		}
-
 	  	});
 
 	  });

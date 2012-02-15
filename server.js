@@ -17,7 +17,7 @@ var httpServer = require('http').createServer(function(request, response) {
 
 });
 
-httpServer.listen(1338, '10.4.16.104');
+httpServer.listen(1337, '10.4.16.104');
 console.log('Listening on ' + 1337);
 
 var nowjs = require("now");
@@ -27,8 +27,7 @@ var everyone = nowjs.initialize(httpServer);
 
 everyone.now.distributeMessage = function(msg) {
 	everyone.now.receiveMessage(this.now.name, this.user.clientId, msg);
-	console.log(this.user.clientId);
-	console.log(msg);
+	console.log("Incoming message [" + this.user.clientId + "]: " + msg);
 };
 
 everyone.now.directMessage = function(id, msg) {
@@ -49,12 +48,9 @@ everyone.now.logStuff = function(msg) {
 };
 
 nowjs.on('connect', function() {
-	//if(this.now.name) {
-		
-		everyone.now.addUserToList(this.now.name, this.now.clientId);
-	//} else {
-		console.log('There is no name');
-	//}
+	console.log('Adding ' + this.now.name + ' to user lists.');		
+	everyone.now.addUserToList(this.now.name, this.now.clientId);
+
 });
 
 nowjs.on('disconnect', function() {
