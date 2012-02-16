@@ -1,5 +1,5 @@
-var fs = require('fs');
-var crypto = require('crypto');
+var fs = require('fs'),
+		crypto = require('crypto');
 
 
 var port = 1342;
@@ -29,6 +29,7 @@ var everyone = nowjs.initialize(httpServer);
 
 var chat_group = nowjs.getGroup('chat-group');
 
+// These will be populated when a user connects.
 var user_names = Array();
 var user_hashes = Array();
 
