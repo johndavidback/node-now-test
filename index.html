@@ -27,7 +27,7 @@
 	    		var html = $("<p class='notice'></p>").html(msg);
 	    	} else {
 	    		// It's not a server message? Okay, fine.
-	    		var html = $("<p></p>").html("<img src='http://gravatar.com/avatar/" + hash + ".png' class='pic'> [<a href='#' class='user-direct' value='" + id + "' data-name='" + name + "'>" + name + "</a>] : " + msg);
+	    		var html = $("<p></p>").html("<img src='http://gravatar.com/avatar/" + hash + ".png?s=50' class='pic'> [<a href='#' class='user-direct' value='" + id + "' data-name='" + name + "'>" + name + "</a>] : " + msg);
 	    	}
 	    	$("#msg").append(html);
 	    	$("#msg").append(now.clientId);
