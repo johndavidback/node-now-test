@@ -17,16 +17,17 @@
       }
 
 	  	now.name = prompt("What is your name?", "");
+	  	now.email = prompt("What is your email?", "");
 	    //now.logStuff("new user joined: " + now.name);
 
-	    now.receiveMessage = function(name, id, msg) {
+	    now.receiveMessage = function(name, hash, id, msg) {
 	    	
 	    	// First, is this a server message?
 	    	if(id == 0 ){
 	    		var html = $("<p class='notice'></p>").html(msg);
 	    	} else {
 	    		// It's not a server message? Okay, fine.
-	    		var html = $("<p></p>").html("[<a href='#' class='user-direct' value='" + id + "' data-name='" + name + "'>" + name + "</a>] : " + msg);
+	    		var html = $("<p></p>").html("<img src='http://gravatar.com/avatar/" + hash + ".png' class='pic'> [<a href='#' class='user-direct' value='" + id + "' data-name='" + name + "'>" + name + "</a>] : " + msg);
 	    	}
 	    	$("#msg").append(html);
 	    	$("#msg").append(now.clientId);
@@ -62,6 +63,9 @@
 	</script>
 
   <style type="text/css">
+  	body {
+  		font-family: 'Georgia';
+  	}
     #user-list {
       background: #CCC;
       position: fixed;
@@ -96,6 +100,7 @@
 	    background: #fff6bf;
 	    color: #514721;
 	    border-color: #ffd324;
+	    font-style: italic;
 	  }
 
   </style>
@@ -103,7 +108,7 @@
 <body>
 <div id="container">
 	<header>
-		<h1>Hey, let's chat</h1>
+		<h1>CHATBOT 9000</h1>
 	</header>
 		
 		<div id="msg"></div>
