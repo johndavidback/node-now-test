@@ -2,7 +2,7 @@ var fs = require('fs'),
 		crypto = require('crypto');
 
 
-var port = 5000;
+var port = process.env.PORT || 1337;
 
 var httpServer = require('http').createServer(function(request, response) {
 	
