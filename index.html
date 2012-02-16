@@ -9,6 +9,13 @@
 
 	  $(document).ready(function () {
 
+      var scrollToLastMessage = function() {
+        var target = $("#msg > :last");
+        $('html,body').animate({
+          scrollTop: target.offset().top + target.height()
+        }, 250);
+      }
+
 	  	now.name = prompt("What is your name?", "");
 	    //now.logStuff("new user joined: " + now.name);
 
@@ -16,6 +23,7 @@
 	    	var html = $("<p></p>").html("[<a href='#' class='user-direct' value='" + id + "' data-name='" + name + "'>" + name + "</a>] : " + msg);
 	    	$("#msg").append(html);
 	    	$("#msg").append(now.clientId);
+        scrollToLastMessage();
 	    };
 
 	    now.addUserToList = function(name, id) {
@@ -26,11 +34,12 @@
 	    	$("#" + id).remove();
 	    };
 
-	    $("#send").click(function() {
+	    $("#controls").submit(function(e) {
 	    	now.distributeMessage($("#text-input").val());
 	    	$("#text-input").val('');
+        e.preventDefault();
 	    });
-	  	
+
 	  	$(".user-direct").live('click', function() {
 	  		var name = $(this).attr('data-name'),
 	  				id = $(this).attr('value'),
@@ -45,16 +54,45 @@
 
 	</script>
 
+  <style type="text/css">
+    #user-list {
+      background: #CCC;
+      position: fixed;
+      right: 10px;
+      top: 10px;
+      padding: 10px;
+    }
+
+    #controls {
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      padding: 10px;
+      background: #CCC;
+      height: 25px;
+    }
+
+    #text-input {
+      max-width: 920px;
+      width: 80%;
+    }
+
+    #spacer {
+      height: 25px;
+    }
+  </style>
 </head>
 <body>
 <div id="container">
 	<h1>Hey, let's chat</h1>
 		
 		<div id="msg"></div>
-		<div id="chat">
-			<input type="text" id="text-input">
-			<input type="button" value="Send" id="send">
-		</div>
+    <div id="spacer"></div>
+    <form id="controls" action="">
+      <input type="text" placeholder="Type here and press enter" id="text-input">
+      <input type="submit" value="Send" id="send">
+    </form>
 
 		<div id="user-list">
 			<h3>Online Users</h3>
