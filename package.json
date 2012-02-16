@@ -1,0 +1,15 @@
+{
+  "author": "John David Back <johndavidback@gmail.com>",
+  "name": "JohnChat",
+  "description": "A chat client. Obviously",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/johndavidback/node-now-test.git"
+  },
+  "engines": {
+    "node": "~v0.4.12"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
