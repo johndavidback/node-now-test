@@ -71,6 +71,8 @@ nowjs.on('connect', function() {
 	chat_group.addUser(this.user.clientId);
 	chat_group.now.addUserToList(this.now.name, this.user.clientId);
 
+	chat_group.now.receiveMessage('Server', 0, name + ' has joined the chat. Say hello!');
+
 	console.log('User ' + name + ' with id ' + client_id + ' is now online');
 
 });

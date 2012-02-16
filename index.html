@@ -20,7 +20,14 @@
 	    //now.logStuff("new user joined: " + now.name);
 
 	    now.receiveMessage = function(name, id, msg) {
-	    	var html = $("<p></p>").html("[<a href='#' class='user-direct' value='" + id + "' data-name='" + name + "'>" + name + "</a>] : " + msg);
+	    	
+	    	// First, is this a server message?
+	    	if(id == 0 ){
+	    		var html = $("<p class='notice'></p>").html(msg);
+	    	} else {
+	    		// It's not a server message? Okay, fine.
+	    		var html = $("<p></p>").html("[<a href='#' class='user-direct' value='" + id + "' data-name='" + name + "'>" + name + "</a>] : " + msg);
+	    	}
 	    	$("#msg").append(html);
 	    	$("#msg").append(now.clientId);
         scrollToLastMessage();
@@ -81,11 +88,23 @@
     #spacer {
       height: 25px;
     }
+
+    .notice {
+	    padding: 0.8em;
+	    margin-bottom: 1em;
+	    border: 2px solid;
+	    background: #fff6bf;
+	    color: #514721;
+	    border-color: #ffd324;
+	  }
+
   </style>
 </head>
 <body>
 <div id="container">
-	<h1>Hey, let's chat</h1>
+	<header>
+		<h1>Hey, let's chat</h1>
+	</header>
 		
 		<div id="msg"></div>
     <div id="spacer"></div>
