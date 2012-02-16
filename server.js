@@ -2,7 +2,7 @@ var fs = require('fs'),
 		crypto = require('crypto');
 
 
-var port = 1337;
+var port = 5000;
 
 var httpServer = require('http').createServer(function(request, response) {
 	
@@ -21,7 +21,7 @@ var httpServer = require('http').createServer(function(request, response) {
 
 });
 
-httpServer.listen(port, '10.4.16.104');
+httpServer.listen(port); //, '10.4.16.104');
 console.log('Listening on: ' + port);
 
 var nowjs = require("now");
