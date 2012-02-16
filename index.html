@@ -26,9 +26,10 @@
 	    	$("#" + id).remove();
 	    };
 
-	    $("#send").click(function() {
+	    $("#controls").submit(function(e) {
 	    	now.distributeMessage($("#text-input").val());
 	    	$("#text-input").val('');
+        e.preventDefault();
 	    });
 	  	
 	  	$(".user-direct").live('click', function() {
@@ -51,8 +52,10 @@
 	<h1>Hey, let's chat</h1>
 		
 		<div id="msg"></div>
-		<input type="text" id="text-input">
-		<input type="button" value="Send" id="send">
+    <form id="controls" action="#">
+      <input type="text" id="text-input">
+      <input type="submit" value="Send" id="send">
+    </form>
 
 		<div id="user-list">
 			<h3>Online Users</h3>
