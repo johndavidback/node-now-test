@@ -9,7 +9,7 @@ CHATBOT 9000
 Okay, thanks, Abe. Anyway, this is a simple chat program based on the example
 provided by nowjs and embellished by myself and the venerable [Brian Hicks](https://github.com/BrianHicks "Brian Hicks").
 
-How do I does it?
+How does I do it?
 -----------------
 
 You need to have node installed.
