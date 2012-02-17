@@ -12,12 +12,14 @@ provided by nowjs and embellished by myself and the venerable [Brian Hicks](http
 How does I do it?
 -----------------
 
-You need to have node installed.
+You need to have node installed. To do that, simply go to [nodejs.org](http://nodejs.org/ "Makes sense, don't it?") and download the package installer for whatever OS you have.
 
 After you pull this repo you need to install nowjs,
 
     npm install now
 
-You can also use the package.json but I don't know how.
+You can also just use the package.json thing by doing
+    
+    npm install
 
 I'm tired of writing this.
